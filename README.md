@@ -80,7 +80,7 @@ cd workers/feedback && wrangler deploy
     {
       "package": "com.miktuga.store",
       "name": "Tuga Store",
-      "repo": "MikTuga/tugastore",
+      "repo": "MikTuga/TugaStore",
       "central": true,
       "versionName": "0.2.1",
       "tag": "v0.2.1",

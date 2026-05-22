@@ -606,3 +606,80 @@ p { color: var(--text-secondary); margin: 0 0 16px 0; }
   h1 { font-size: 32px; }
   .hero-lead { font-size: 16px; }
 }
+
+/* --- Language switcher --- */
+.lang-switcher {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 12px;
+}
+
+.lang-switcher a {
+  padding: 6px 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.lang-switcher a.active {
+  background: var(--bg-card);
+  color: var(--text-primary);
+}
+
+.lang-switcher a:hover { color: var(--text-primary); opacity: 1; }
+
+/* --- App card download button (replacement for two-link footer) --- */
+.app-download {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 14px;
+  margin-top: 14px;
+  border-top: 1px solid var(--border);
+}
+
+.app-download-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 600;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.app-download-link:hover {
+  border-color: var(--accent-teal);
+  background: var(--bg-card-hover);
+  opacity: 1;
+}
+
+.app-download-link .badge-version {
+  background: rgba(38, 166, 154, 0.15);
+  color: var(--accent-teal);
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  font-family: "SF Mono", "JetBrains Mono", monospace;
+}
+
+.app-download-link.app-download-secondary {
+  background: transparent;
+  color: var(--text-dim);
+  font-size: 12px;
+  padding: 8px 14px;
+}
+
+.app-download-link.app-download-secondary:hover {
+  border-color: var(--border);
+  color: var(--text-secondary);
+}

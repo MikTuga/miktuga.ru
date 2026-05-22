@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tuga ecosystem — приложения для головы Geely Tugella</title>
+<meta name="description" content="Self-hosted каталог приложений + 5 утилит (OBD, GPS, Media, Sync, Settings) для автомобильной головы Geely Tugella на прошивке Geely Garage (Android 5.1). Открытый исходный код." />
+<meta property="og:title" content="Tuga ecosystem — приложения для Geely Tugella" />
+<meta property="og:description" content="Закрываем нишу 'под старый Android новый софт не выпускают' для владельцев Geely на Geely Garage." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://miktuga.ru/ru/" />
+<meta property="og:locale" content="ru_RU" />
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+<link rel="alternate" hreflang="ru" href="https://miktuga.ru/ru/" />
+<link rel="alternate" hreflang="en" href="https://miktuga.ru/en/" />
+<link rel="alternate" hreflang="x-default" href="https://miktuga.ru/en/" />
+<link rel="canonical" href="https://miktuga.ru/ru/" />
+<link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a href="/ru/" class="brand">
+      <span class="brand-mark">T</span>
+      <span class="brand-text">Tuga<span class="brand-text-dim">.ecosystem</span></span>
+    </a>
+    <nav class="topbar-nav">
+      <a href="#apps">Приложения</a>
+      <a href="#install">Установка</a>
+      <a href="#community">Community</a>
+      <a href="https://github.com/MikTuga" target="_blank" rel="noopener">GitHub ↗</a>
+      <span class="lang-switcher" role="group" aria-label="Language">
+        <a href="/ru/" class="active">RU</a>
+        <a href="/en/">EN</a>
+      </span>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Geely Tugella · Geely Garage · Android 5.1</span>
+        <h1>Свежий софт под старую голову</h1>
+        <p class="hero-lead">
+          Под Android 5.1 (API 22) — а это голова Geely Tugella и других моделей на прошивке Geely Garage — новый софт почти не выпускают.
+          Tuga ecosystem закрывает эту нишу: <strong>собственный каталог приложений</strong> + 5 утилит, оффлайн-first, обновления по WiFi.
+        </p>
+        <div class="hero-cta">
+          <a href="#install" class="btn btn-primary">Скачать APK</a>
+          <a href="https://github.com/MikTuga" class="btn btn-ghost" target="_blank" rel="noopener">Исходники на GitHub</a>
+        </div>
+        <div class="hero-meta">
+          <span>v0.2.1 · 2026-05-23 · 6 утилит · MIT License · подпись SHA-1 <code>06ebb7ac…</code></span>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="device-mockup">
+          <div class="device-screen">
+            <div class="screen-header">
+              <div class="screen-app-icon"></div>
+              <div class="screen-title">
+                <strong>Tuga Store</strong>
+                <span>Tugella Edition v0.2</span>
+              </div>
+              <span class="screen-brand">GEELY TUGELLA</span>
+            </div>
+            <div class="screen-tiles">
+              <div class="tile tile-blue"><span class="tile-icon">⚙</span><strong>Диагностика</strong><span>Состояние системы</span></div>
+              <div class="tile tile-teal"><span class="tile-icon">▦</span><strong>Каталог</strong><span>5/6 установлено</span></div>
+              <div class="tile tile-purple"><span class="tile-icon">↥</span><strong>Экспорт</strong><span>отчёт на USB</span></div>
+            </div>
+            <div class="screen-status">
+              <span class="status-item">⏿ USB подключена</span>
+              <span class="status-item">⛨ Root доступен</span>
+              <span class="status-item">▤ 745 МБ свободно</span>
+              <span class="status-item">⌬ Android 5.1.1</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apps" class="apps">
+  <div class="container">
+    <h2>6 приложений</h2>
+    <p class="section-lead">Каждое — отдельный open-source проект. Можно ставить только нужные. APK собираются GitHub Actions и привязаны к каждому Release.</p>
+
+    <div class="app-grid">
+
+      <article class="app-card app-card-store">
+        <header class="app-card-head">
+          <span class="app-icon app-icon-blue">⌬</span>
+          <div>
+            <h3>Tuga Store</h3>
+            <span class="app-version">v0.2.1 · central</span>
+          </div>
+        </header>
+        <p>Главное приложение экосистемы — каталог + диагностика устройства + форма обратной связи. Ставится первым.</p>
+        <ul class="app-features">
+          <li>Каталог с поиском, фильтрами, сортировкой</li>
+          <li>Диагностика: 10+ секций (CPU, дисплей, USB, root, сенсоры…)</li>
+          <li>Установка APK через PackageInstaller.Session</li>
+          <li>Feedback с offline /sdcard fallback</li>
+        </ul>
+        <div class="app-download">
+          <a class="app-download-link" href="https://github.com/MikTuga/TugaStore/releases/latest/download/tugastore-release.apk">
+            <span>📦 Скачать APK</span>
+            <span class="badge-version">v0.2.1</span>
+          </a>
+          <a class="app-download-link app-download-secondary" href="https://github.com/MikTuga/TugaStore" target="_blank" rel="noopener">→ Исходники & Issues</a>
+        </div>
+      </article>
+
+      <article class="app-card app-card-settings">
+        <header class="app-card-head">
+          <span class="app-icon app-icon-teal">⚙</span>
+          <div>
+            <h3>Tuga Settings</h3>
+            <span class="app-version">v0.1.1 · central</span>
+          </div>
+        </header>
+        <p>Общие настройки экосистемы (единицы измерения, пути) + ContentProvider. Ставится сразу после TugaStore.</p>
+        <ul class="app-features">
+          <li>Inline segmented controls (никаких dialogs)</li>
+          <li>Folder picker для USB / Music / Reports</li>
+          <li>ContentProvider permission=normal — открыт community apps</li>
+          <li>Типизированная схема в tuga-design</li>
+        </ul>
+        <div class="app-download">
+          <a class="app-download-link" href="https://github.com/MikTuga/TugaSettings/releases/latest/download/tugasettings-release.apk">
+            <span>📦 Скачать APK</span>
+            <span class="badge-version">v0.1.1</span>
+          </a>
+          <a class="app-download-link app-download-secondary" href="https://github.com/MikTuga/TugaSettings" target="_blank" rel="noopener">→ Исходники & Issues</a>
+        </div>
+      </article>
+
+      <article class="app-card">
+        <header class="app-card-head">
+          <span class="app-icon app-icon-blue">◔</span>
+          <div>
+            <h3>Tuga OBD</h3>
+            <span class="app-version">v0.1.0 · community</span>
+          </div>
+        </header>
+        <p>OBD-II дашборд: скорость, обороты, температура, топливо. Сейчас demo-режим, ELM327 Bluetooth — в следующей версии.</p>
+        <ul class="app-features">
+          <li>2×2 metric grid с большими цифрами</li>
+          <li>DTC bar + voltage display</li>
+          <li>Sin-wave demo data (для тестов)</li>
+          <li>Читает units из Tuga Settings (км/ч ↔ mph)</li>
+        </ul>
+        <div class="app-download">
+          <a class="app-download-link" href="https://github.com/MikTuga/TugaOBD/releases/latest/download/tugaobd-release.apk">
+            <span>📦 Скачать APK</span>
+            <span class="badge-version">v0.1.0</span>
+          </a>
+          <a class="app-download-link app-download-secondary" href="https://github.com/MikTuga/TugaOBD" target="_blank" rel="noopener">→ Исходники & Issues</a>
+        </div>
+      </article>
+
+      <article class="app-card">
+        <header class="app-card-head">
+          <span class="app-icon app-icon-teal">⊕</span>
+          <div>
+            <h3>Tuga GPS</h3>
+            <span class="app-version">v0.1.0 · community</span>
+          </div>
+        </header>
+        <p>Координаты, скорость, высота, точность, спутники + компас с magnetic declination correction.</p>
+        <ul class="app-features">
+          <li>LocationManager (GPS + Network)</li>
+          <li>TYPE_ROTATION_VECTOR компас</li>
+          <li>Last-known fallback при cold start</li>
+          <li>Monospace для координат</li>
+        </ul>
+        <div class="app-download">
+          <a class="app-download-link" href="https://github.com/MikTuga/TugaGPS/releases/latest/download/tugagps-release.apk">
+            <span>📦 Скачать APK</span>
+            <span class="badge-version">v0.1.0</span>
+          </a>
+          <a class="app-download-link app-download-secondary" href="https://github.com/MikTuga/TugaGPS" target="_blank" rel="noopener">→ Исходники & Issues</a>
+        </div>
+      </article>
+
+      <article class="app-card">
+        <header class="app-card-head">
+          <span class="app-icon app-icon-purple">♪</span>
+          <div>
+            <h3>Tuga Media</h3>
+            <span class="app-version">v0.1.0 · community</span>
+          </div>
+        </header>
+        <p>Сканер музыки и видео на USB-флешке. Передаёт в стоковый плеер головы через ACTION_VIEW.</p>
+        <ul class="app-features">
+          <li>mp3/m4a/flac/ogg/wav + mp4/mkv/avi/webm/mov</li>
+          <li>Filter chips: All / Audio / Video</li>
+          <li>Fallback на /sdcard/Music если USB нет</li>
+          <li>Тап → системный плеер</li>
+        </ul>
+        <div class="app-download">
+          <a class="app-download-link" href="https://github.com/MikTuga/TugaMedia/releases/latest/download/tugamedia-release.apk">
+            <span>📦 Скачать APK</span>
+            <span class="badge-version">v0.1.0</span>
+          </a>
+          <a class="app-download-link app-download-secondary" href="https://github.com/MikTuga/TugaMedia" target="_blank" rel="noopener">→ Исходники & Issues</a>
+        </div>
+      </article>
+
+      <article class="app-card">
+        <header class="app-card-head">
+          <span class="app-icon app-icon-teal">⇄</span>
+          <div>
+            <h3>Tuga Sync</h3>
+            <span class="app-version">v0.1.0 · community</span>
+          </div>
+        </header>
+        <p>Bidirectional sync файлов USB ↔ устройство. Два preset профиля: Music и Reports.</p>
+        <ul class="app-features">
+          <li>Skip-if-same-size optimization</li>
+          <li>Progress по file count</li>
+          <li>Truncation warning (no silent data loss)</li>
+          <li>Пути из Tuga Settings</li>
+        </ul>
+        <div class="app-download">
+          <a class="app-download-link" href="https://github.com/MikTuga/TugaSync/releases/latest/download/tugasync-release.apk">
+            <span>📦 Скачать APK</span>
+            <span class="badge-version">v0.1.0</span>
+          </a>
+          <a class="app-download-link app-download-secondary" href="https://github.com/MikTuga/TugaSync" target="_blank" rel="noopener">→ Исходники & Issues</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="install" class="install">
+  <div class="container">
+    <h2>Установка на голову</h2>
+
+    <ol class="install-steps">
+      <li>
+        <h3>1. Подготовить USB-флешку</h3>
+        <p>Формат <strong>FAT32</strong> (ExFAT не читается). Объём ≤ 32 ГБ — некоторые головы не подхватывают больше.</p>
+      </li>
+      <li>
+        <h3>2. Скачать APK на флешку</h3>
+        <p>Скачать APK из раздела выше (или со страниц Releases каждого репо). Структура на флешке:</p>
+        <pre><code>&lt;корень флешки&gt;
+├── TugaStore.apk            ← ставится первым
+└── apps/
+    ├── tugasettings.apk     ← вторым (создаёт ContentProvider)
+    ├── tugaobd.apk
+    ├── tugagps.apk
+    ├── tugamedia.apk
+    └── tugasync.apk</code></pre>
+      </li>
+      <li>
+        <h3>3. Установить TugaStore</h3>
+        <p>Воткнуть флешку в голову → открыть ApkInstaller / Root Explorer → тапнуть <code>TugaStore.apk</code> → Установить.</p>
+      </li>
+      <li>
+        <h3>4. Через Tuga Store установить остальные</h3>
+        <p>Открыть Tuga Store → <em>Каталог приложений</em> → нажать <strong>УСТАНОВИТЬ</strong> для каждой утилиты. <em>Tuga Settings первым.</em></p>
+      </li>
+      <li>
+        <h3>5. (опционально) Обновления по WiFi</h3>
+        <p>В версии v0.4+ Tuga Store сам проверяет <code>miktuga.ru/api/manifest.json</code> и предлагает обновиться без USB. Сейчас — только USB.</p>
+      </li>
+    </ol>
+
+    <div class="install-note">
+      <strong>Зачем USB первый раз?</strong>
+      Голова не имеет Google Play, поэтому первый раз нужен sideload. После установки Tuga Store будет ставить остальные апки сам.
+    </div>
+  </div>
+</section>
+
+<section id="community" class="community">
+  <div class="container">
+    <h2>Где обсуждать</h2>
+    <div class="community-grid">
+      <a class="community-card" href="https://github.com/MikTuga" target="_blank" rel="noopener">
+        <span class="community-icon">⌥</span>
+        <strong>GitHub</strong>
+        <p>Issues, PR, releases. 7 публичных репо.</p>
+      </a>
+      <a class="community-card community-card-dim" href="#">
+        <span class="community-icon">✈</span>
+        <strong>Telegram <span class="badge">soon</span></strong>
+        <p>Канал для анонсов + чат для help. Появится с v0.3.</p>
+      </a>
+      <a class="community-card community-card-dim" href="#">
+        <span class="community-icon">★</span>
+        <strong>drive2.ru <span class="badge">soon</span></strong>
+        <p>Посты с гайдами для русскоязычной community.</p>
+      </a>
+      <a class="community-card community-card-dim" href="#">
+        <span class="community-icon">⌘</span>
+        <strong>4pda.to <span class="badge">soon</span></strong>
+        <p>Ветка обсуждения для Android-форумной community.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <p class="footer-brand">Tuga ecosystem</p>
+      <p class="footer-tagline">Open-source утилиты для Geely Tugella и Geely Garage.</p>
+    </div>
+    <div>
+      <p class="footer-heading">Для разработчиков</p>
+      <ul>
+        <li><a href="https://github.com/MikTuga/tuga-design" target="_blank" rel="noopener">tuga-design (JitPack lib)</a></li>
+        <li><a href="https://github.com/MikTuga/TugaStore/blob/main/docs/plans/2026-05-17-tuga-ecosystem-expansion.md" target="_blank" rel="noopener">Roadmap (Phase 1-3)</a></li>
+        <li><a href="/api/manifest.json" target="_blank" rel="noopener">OTA manifest API</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-heading">Legal</p>
+      <ul>
+        <li>Unofficial. Не аффилирован с Geely Auto Group.</li>
+        <li>MIT License на весь код.</li>
+        <li>"Geely", "Tugella" — товарные знаки Geely Auto Group.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 MikTuga · made by community, for community</span>
+  </div>
+</footer>
+
+</body>
+</html>
