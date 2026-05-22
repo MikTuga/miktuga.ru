@@ -1,0 +1,29 @@
+# Ed25519 PRIVATE KEY — never commit
+keys/private.pem
+keys/private.pem.gpg
+keys/*.private
+
+# Node modules (workers)
+node_modules/
+**/node_modules/
+
+# Wrangler / Cloudflare
+.wrangler/
+**/.wrangler/
+**/.dev.vars
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+*.log
+npm-debug.log*
+
+# Build artifacts
+dist/
+build/
+.cache/
