@@ -71,7 +71,7 @@ cd <App>
 
 # Verify signing
 apksigner verify --print-certs app/build/outputs/apk/release/*.apk
-# должен показать SHA-1 06ebb7ac... — match с central keystore
+# должен показать SHA-1 e2ded629... — match с central keystore
 ```
 
 ### Tag + push
@@ -138,7 +138,7 @@ Manifest API сам подхватит свежий release при следую�
 - [ ] CHANGELOG entry создан
 - [ ] Build success: `./gradlew assembleRelease`
 - [ ] apksigner verify: cert SHA-1 матчит ожидаемый
-- [ ] (для central apps) cert SHA-1 = `06ebb7ac36717017003232f471908c97d3407c1f`
+- [ ] (для central apps) cert SHA-1 = `e2ded6293acc1541ffd8962b3a28a69d3835bbd0`
 - [ ] git tag pushed
 - [ ] GitHub Release создан с APK asset
 - [ ] manifest.json обновлён + signed + deployed
