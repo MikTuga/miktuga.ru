@@ -250,9 +250,16 @@
         <p>Формат <strong>FAT32</strong> (ExFAT не читается). Объём ≤ 32 ГБ — некоторые головы не подхватывают больше.</p>
       </li>
       <li>
-        <h3>2. Скачать APK на флешку</h3>
-        <p>Скачать APK из раздела выше (или со страниц Releases каждого репо). Структура на флешке:</p>
-        <pre><code>&lt;корень флешки&gt;
+        <h3>2. Скачать готовый USB-бандл</h3>
+        <p>Один ZIP-архив со всеми 6 APK уже в правильной структуре папок. Распаковать в корень флешки и всё.</p>
+        <a class="btn btn-primary install-bundle-btn" href="https://github.com/MikTuga/miktuga.ru/releases/latest/download/tuga-bundle.zip">
+          📦 Скачать tuga-bundle.zip
+        </a>
+        <p class="install-bundle-meta">Собирается ежедневно из latest releases. <a href="https://github.com/MikTuga/miktuga.ru/releases" target="_blank" rel="noopener">Все версии и SHA-256</a>.</p>
+        <details class="install-alt">
+          <summary>Хочу собрать вручную из отдельных APK</summary>
+          <p>Скачать APK из карточек выше (или со страниц Releases). Структура на флешке:</p>
+          <pre><code>&lt;корень флешки&gt;
 ├── TugaStore.apk            ← ставится первым
 └── apps/
     ├── tugasettings.apk     ← вторым (создаёт ContentProvider)
@@ -260,6 +267,7 @@
     ├── tugagps.apk
     ├── tugamedia.apk
     └── tugasync.apk</code></pre>
+        </details>
       </li>
       <li>
         <h3>3. Установить TugaStore</h3>

@@ -250,9 +250,16 @@
         <p>Format <strong>FAT32</strong> (ExFAT is not readable). Capacity ≤ 32 GB — some head units don't recognize larger drives.</p>
       </li>
       <li>
-        <h3>2. Copy APKs to the stick</h3>
-        <p>Download APKs from the section above (or the Releases page of each repo). Folder structure on the stick:</p>
-        <pre><code>&lt;USB root&gt;
+        <h3>2. Download the ready-made USB bundle</h3>
+        <p>A single ZIP with all 6 APKs already in the correct folder layout. Unzip into the USB root — done.</p>
+        <a class="btn btn-primary install-bundle-btn" href="https://github.com/MikTuga/miktuga.ru/releases/latest/download/tuga-bundle.zip">
+          📦 Download tuga-bundle.zip
+        </a>
+        <p class="install-bundle-meta">Rebuilt daily from the latest releases. <a href="https://github.com/MikTuga/miktuga.ru/releases" target="_blank" rel="noopener">All versions and SHA-256</a>.</p>
+        <details class="install-alt">
+          <summary>I'd rather assemble it manually from individual APKs</summary>
+          <p>Download APKs from the cards above (or each repo's Releases). Folder structure on the stick:</p>
+          <pre><code>&lt;USB root&gt;
 ├── TugaStore.apk            ← install first
 └── apps/
     ├── tugasettings.apk     ← install second (creates ContentProvider)
@@ -260,6 +267,7 @@
     ├── tugagps.apk
     ├── tugamedia.apk
     └── tugasync.apk</code></pre>
+        </details>
       </li>
       <li>
         <h3>3. Install TugaStore</h3>

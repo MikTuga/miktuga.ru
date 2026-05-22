@@ -1,0 +1,113 @@
+name: Build USB bundle
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * *'
+  repository_dispatch:
+    types: [app-released]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch latest APK from each Tuga app repo
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          mkdir -p stage/apps
+          : > stage/versions.txt
+          for entry in "TugaStore:tugastore" "TugaSettings:tugasettings" "TugaOBD:tugaobd" "TugaGPS:tugagps" "TugaMedia:tugamedia" "TugaSync:tugasync"; do
+            repo="${entry%%:*}"
+            id="${entry##*:}"
+            asset="${id}-release.apk"
+            echo "-> fetching $repo / $asset"
+            gh release download --repo "MikTuga/$repo" --pattern "$asset" --dir /tmp
+            if [ "$repo" = "TugaStore" ]; then
+              cp "/tmp/$asset" stage/TugaStore.apk
+            else
+              cp "/tmp/$asset" "stage/apps/${id}.apk"
+            fi
+            tag=$(gh release view --repo "MikTuga/$repo" --json tagName -q '.tagName')
+            sha=$(sha256sum "/tmp/$asset" | awk '{print $1}')
+            printf '%s %s %s %s\n' "$repo" "$tag" "$asset" "$sha" >> stage/versions.txt
+            rm -f "/tmp/$asset"
+          done
+          cat stage/versions.txt
+
+      - name: Compose bundle README
+        run: |
+          cat > stage/README.md <<'EOF'
+          # Tuga ecosystem — USB install bundle
+
+          Распакуйте всё содержимое архива в корень FAT32 USB-флешки, воткните в голову Geely Tugella, через ApkInstaller установите TugaStore.apk. Дальше Tuga Store сам подхватит остальные APK из apps/ и предложит их установить.
+
+          ## Структура
+
+          /
+          |-- TugaStore.apk          (ставится первым)
+          |-- apps/
+          |   |-- tugasettings.apk   (вторым — создаёт ContentProvider)
+          |   |-- tugaobd.apk
+          |   |-- tugagps.apk
+          |   |-- tugamedia.apk
+          |   `-- tugasync.apk
+          `-- README.md (этот файл)
+
+          ## Версии и хэши
+
+          См. файл versions.txt рядом — формат: <repo> <tag> <asset> <sha256>.
+
+          ## Подпись
+
+          - TugaStore.apk и apps/tugasettings.apk подписаны общим release-ключом MikTuga.
+          - Остальные 4 утилиты — debug-ключом community-сборок.
+          - Все 6 APK работают с одним и тем же ContentProvider Tuga Settings (permission=normal).
+
+          ## Лицензия и compliance
+
+          MIT. Unofficial — не аффилирован с Geely Auto Group.
+          Сайт: https://miktuga.ru · Исходники: https://github.com/MikTuga
+          EOF
+
+      - name: Zip bundle
+        id: zip
+        run: |
+          set -euo pipefail
+          STAMP=$(date -u +%Y%m%d)
+          (cd stage && zip -r ../tuga-bundle.zip .)
+          cp tuga-bundle.zip "tuga-bundle-${STAMP}.zip"
+          SHA256=$(sha256sum tuga-bundle.zip | awk '{print $1}')
+          SIZE=$(stat -c '%s' tuga-bundle.zip)
+          echo "stamp=$STAMP"   >> "$GITHUB_OUTPUT"
+          echo "sha256=$SHA256" >> "$GITHUB_OUTPUT"
+          echo "size=$SIZE"     >> "$GITHUB_OUTPUT"
+          ls -lh tuga-bundle*.zip
+
+      - name: Publish bundle release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: bundle-${{ steps.zip.outputs.stamp }}
+          name: USB bundle ${{ steps.zip.outputs.stamp }}
+          files: |
+            tuga-bundle.zip
+            tuga-bundle-${{ steps.zip.outputs.stamp }}.zip
+            stage/versions.txt
+          fail_on_unmatched_files: true
+          body: |
+            Содержит latest release APK всех 6 приложений Tuga ecosystem, упакованные в структуру FAT32-флешки.
+
+            **Размер:** ~${{ steps.zip.outputs.size }} bytes
+            **SHA-256:** `${{ steps.zip.outputs.sha256 }}`
+
+            Скачать:
+            - `tuga-bundle.zip` — постоянная ссылка (всегда latest stamp)
+            - `tuga-bundle-${{ steps.zip.outputs.stamp }}.zip` — дата-stamped копия
+
+            Версии внутри: см. `versions.txt`.
